@@ -19,7 +19,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={cn("max-w-[100%] overflow-x-hidden")}>
-        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
+        <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
           <TRPCReactProvider>{children}</TRPCReactProvider>{" "}
 
         </ThemeProvider>

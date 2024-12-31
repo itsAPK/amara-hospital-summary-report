@@ -42,7 +42,7 @@ export const Doctors = () => {
           Manage Doctors
         </Button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[805px]">
+      <DialogContent className="sm:max-w-[805px] h-[60vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle>Doctors </DialogTitle>
         </DialogHeader>

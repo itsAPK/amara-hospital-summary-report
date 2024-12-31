@@ -45,7 +45,7 @@ export const Emergency = () => {
           Manage Emergency
         </Button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[805px]">
+      <DialogContent className="sm:max-w-[805px] h-[60vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle>Emergency </DialogTitle>
         </DialogHeader>

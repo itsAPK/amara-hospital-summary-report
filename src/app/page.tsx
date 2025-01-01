@@ -96,12 +96,11 @@ export default function Home() {
                   </Table>
                 </div>
               </div>
-            </div>
-            <div className="mt-5 flex flex-col gap-4 rounded-xl border p-5 text-sm">
-              <h2 className="py-10 text-center text-xl font-bold">
+       
+              <h2 className=" text-center text-xl font-bold pt-10">
                 Summary of Available Doctors
               </h2>
-              <div className="rounded-xl border shadow">
+              <div className="rounded-xl border shadow mx-4">
                 <Table className="">
                   <TableHeader>
                     <TableRow>
@@ -159,7 +158,7 @@ export default function Home() {
                   </TableBody>
                 </Table>
               </div>
-            </div>
+              </div>
           </>
         )}
       </div>

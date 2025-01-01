@@ -34,24 +34,25 @@ export default function Home() {
             </div>
           </div>
         ) : (
-          <><div className="col-span-12 flex border rounded-xl py-5 mt-5 flex-col gap-4">
-              <div className="flex justify-center gap-4 px-6 py-10">
+          <>
+            <div className="col-span-12 mt-5 flex flex-col gap-4 rounded-xl border py-5">
+              <div className="flex justify-between gap-4 px-6 py-10">
                 <div>
-
                   <img
                     className="w-36"
-                    src="https://xewnjhdnjxlaadjthrex.supabase.co/storage/v1/object/public/amarahospital/amaralogo.png?t=2024-12-26T20%3A48%3A03.068Z" />
+                    src="https://xewnjhdnjxlaadjthrex.supabase.co/storage/v1/object/public/amarahospital/amaralogo.png?t=2024-12-26T20%3A48%3A03.068Z"
+                  />
                 </div>
+                <DateTime />
                 <div>
-
                   <img
                     className="w-56"
-                    src="https://xewnjhdnjxlaadjthrex.supabase.co/storage/v1/object/public/amarahospital/ats1.png" />
+                    src="https://xewnjhdnjxlaadjthrex.supabase.co/storage/v1/object/public/amarahospital/ats1.png"
+                  />
                 </div>
-
               </div>
-              <DateTime />
-              <div className="flex justify-center flex-col gap-4 px-6 py-0">
+
+              <div className="flex flex-col justify-center gap-4 px-6 py-0">
                 <h2 className="text-center text-xl font-bold">
                   Emergency Consultant
                 </h2>
@@ -68,7 +69,9 @@ export default function Home() {
                         <TableHead className="bg-primary text-center text-sm text-white">
                           Status
                         </TableHead>
-                        <TableHead className="bg-primary rounded-tr-xl  text-center text-sm text-white">Contact Number</TableHead>
+                        <TableHead className="rounded-tr-xl bg-primary text-center text-sm text-white">
+                          Contact Number
+                        </TableHead>
                       </TableRow>
                     </TableHeader>
                     <TableBody>
@@ -87,67 +90,79 @@ export default function Home() {
                             <TableCell className="text-center text-sm">
                               {d.doctor?.mobile}
                             </TableCell>
-
-                          </TableRow>
-                        ))}
-                    </TableBody>
-                  </Table></div>
-              </div>
-            </div><div className="mt-5 flex flex-col gap-4 rounded-xl border p-5 text-sm">
-                <h2 className="py-10 text-center text-xl font-bold">
-                  Summary of Available Doctors
-                </h2>
-                <div className="rounded-xl border shadow">
-                  <Table className="">
-                    <TableHeader>
-                      <TableRow>
-                        <TableHead className="rounded-tl-xl bg-primary text-center text-sm text-white">
-                          Department
-                        </TableHead>
-                        <TableHead className="bg-primary text-center text-sm text-white">
-                          Unavailable Doctor
-                        </TableHead>
-                        <TableHead className="bg-primary text-center text-sm text-white">
-                          On-Duty Doctor
-                        </TableHead>
-                        <TableHead className="rounded-tr-xl bg-primary text-center text-sm text-white">
-                          Contact Number
-                        </TableHead>
-                      </TableRow>
-                    </TableHeader>
-                    <TableBody>
-                      {department.data &&
-                        department.data?.map((d) => (
-                          <TableRow key={d.id}>
-                            <TableCell className="text-center text-sm">
-                              {d.name}
-                            </TableCell>
-                            <TableCell className="text-center text-sm">
-                              {/* @ts-ignore */}
-                              {d.unavailableDoctor
-                                ? //@ts-ignore
-                                d.unavailableDoctor.name
-                                : "---"}
-                            </TableCell>
-                            <TableCell className="text-center text-sm">
-                              {/* @ts-ignore */}
-
-                              {d.onDutyDoctor ? d.onDutyDoctor.name : "---"}
-                            </TableCell>
-                            <TableCell className="text-center text-sm">
-                              {/* @ts-ignore */}
-
-                              {d.onDutyDoctor ? d.onDutyDoctor.mobile : "---"}
-                            </TableCell>
                           </TableRow>
                         ))}
                     </TableBody>
                   </Table>
                 </div>
-              </div></>
+              </div>
+            </div>
+            <div className="mt-5 flex flex-col gap-4 rounded-xl border p-5 text-sm">
+              <h2 className="py-10 text-center text-xl font-bold">
+                Summary of Available Doctors
+              </h2>
+              <div className="rounded-xl border shadow">
+                <Table className="">
+                  <TableHeader>
+                    <TableRow>
+                      <TableHead className="rounded-tl-xl bg-primary text-center text-sm text-white">
+                        Department
+                      </TableHead>
+                      <TableHead className="bg-primary text-center text-sm text-white">
+                        On-Duty Doctor
+                      </TableHead>
+                      <TableHead className="bg-primary text-center text-sm text-white">
+                        Backup Doctor
+                      </TableHead>
+                  
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
+                    {department.data &&
+                      department.data?.map((d) => (
+                        <TableRow key={d.id}>
+                          <TableCell className="text-center text-sm">
+                            {d.name}
+                          </TableCell>
+                          <TableCell className="text-center text-sm">
+                            <div className="flex flex-col gap-1">
+                             
+                              <span>
+                                {/* @ts-ignore */}
+                                {d.onDutyDoctor ? d.onDutyDoctor.name : "---"}
+                              </span>
+                        
+                              <span className="text-gray-600">
+                                      {/* @ts-ignore */}
+                                {d.onDutyDoctor ? d.onDutyDoctor.mobile : "---"}
+                              </span>
+                            </div>
+                          </TableCell>
+                          <TableCell className="text-center text-sm">
+                          <div className="flex flex-col gap-1">
+                             
+                             <span>
+                               {/* @ts-ignore */}
+                               {d.unavailableDoctor ? d.unavailableDoctor.name : "---"}
+                             </span>
+                       
+                             <span className="text-gray-600">
+                                     {/* @ts-ignore */}
+                               {d.unavailableDoctor ? d.unavailableDoctor.mobile : "---"}
+                             </span>
+                           </div>
+                          </TableCell>
+                         
+                         
+                        </TableRow>
+                      ))}
+                  </TableBody>
+                </Table>
+              </div>
+            </div>
+          </>
         )}
       </div>
-     
     </div>
   );
 }

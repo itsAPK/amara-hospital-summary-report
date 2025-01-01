@@ -37,26 +37,42 @@ export default function Admin() {
               </div>
             ) : (
               <div className="mt-5 flex flex-col gap-4 rounded-xl border text-sm">
-                <div className="grid grid-cols-5 gap-4 border-b border-primary/10 p-4">
+                <div className="grid grid-cols-4 -4 border-b border-primary/10 p-4">
                   <div className="text-center text-xs font-semibold text-primary">
                     Department Name
-                  </div>
-                  <div className="text-center text-xs font-semibold text-primary">
-                    Unavailable Doctor
                   </div>
                   <div className="text-center text-xs font-semibold text-primary">
                     On Duty Doctor
                   </div>
                   <div className="text-center text-xs font-semibold text-primary">
-                    Contact Number
+                    Backup Doctor
                   </div>
+                
+                  
                 </div>
                 {departments.data?.map((department) => (
                   <div
-                    className="grid grid-cols-5 gap-4 border-b border-primary/10 p-4"
+                    className="grid grid-cols-4 border-b border-primary/10 "
                     key={department.id}
                   >
                     <div className="text-center text-xs">{department.name}</div>
+                
+                   {/* @ts-ignore */}
+                   <div className="text-center text-xs">
+                      {department.onDutyDoctor
+                        ? //@ts-ignore
+
+                          department.onDutyDoctor.name
+                        : "---"}
+
+<div className="text-center text-xs text-gray-600">
+                      {" "}
+                      {department.onDutyDoctor
+                        ? //@ts-ignore
+                          department.onDutyDoctor.mobile
+                        : "---"}
+                    </div>
+                    </div>
                     {/* @ts-ignore */}
                     <div className="text-center text-xs">
                       {department.unavailableDoctor
@@ -64,23 +80,18 @@ export default function Admin() {
 
                           department.unavailableDoctor.name
                         : "---"}
-                    </div>
-                    {/* @ts-ignore */}
-                    <div className="text-center text-xs">
-                      {department.onDutyDoctor
-                        ? //@ts-ignore
-
-                          department.onDutyDoctor.name
-                        : "---"}
-                    </div>
-                    {/* @ts-ignore */}
-                    <div className="text-center text-xs">
+                      <div className="text-center text-xs text-gray-600">
                       {" "}
-                      {department.onDutyDoctor
+                      {department.unavailableDoctor
                         ? //@ts-ignore
-                          department.onDutyDoctor.mobile
+                          department.unavailableDoctor.mobile
                         : "---"}
                     </div>
+                    </div>
+
+                 
+                    {/* @ts-ignore */}
+                  
                     <div className="flex justify-end items-center gap-4">
                       <EditDepartment
                         data={{

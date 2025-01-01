@@ -151,7 +151,7 @@ console.log(data)
               name="unavailableDoctor"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Unavailable Doctor</FormLabel>
+                  <FormLabel>Backup Doctor</FormLabel>
                   <Select
                     onValueChange={field.onChange}
                     defaultValue={field.value}
